@@ -1,0 +1,12 @@
+diff -up pyside-qt4.6+0.4.1/CMakeLists.txt.disable_xvfb-run pyside-qt4.6+0.4.1/CMakeLists.txt
+--- pyside-qt4.6+0.4.1/CMakeLists.txt.disable_xvfb-run	2010-09-11 18:28:54.000000000 +0300
++++ pyside-qt4.6+0.4.1/CMakeLists.txt	2010-09-11 18:29:45.000000000 +0300
+@@ -13,7 +13,7 @@ find_package(Qt4 4.5.0 REQUIRED)
+ 
+ find_program(XVFB_RUN NAMES xvfb-run)
+ set(XVFB_EXEC "")
+-if (NOT ${XVFB_RUN} MATCHES "XVFB_RUN-NOTFOUND")
++if (FALSE)
+     set(XVFB_EXEC ${XVFB_RUN})
+     message("Using xvfb-run to perform QtGui tests.")
+ endif()
