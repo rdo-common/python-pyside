@@ -2,7 +2,7 @@
 
 Name:           python-pyside
 Version:        0.4.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
@@ -22,7 +22,7 @@ BuildRequires:  generatorrunner-devel
 #BuildRequires:  phonon-devel
 BuildRequires:  python2-devel
 BuildRequires:  qt4-devel
-BuildRequires:  qt-webkit-devel
+BuildRequires:  qt4-webkit-devel
 BuildRequires:  shiboken-devel
 BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  xorg-x11-xauth
@@ -45,7 +45,7 @@ Requires:       cmake
 Requires:       phonon-devel
 Requires:       python2-devel
 Requires:       qt4-devel
-Requires:       qt-webkit-devel
+Requires:       qt4-webkit-devel
 Requires:       shiboken-devel
 
 %description    devel
@@ -118,6 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Sep 17 2010 Kalev Lember <kalev@smartlink.ee> - 0.4.1-2
+- Depend on qt4-webkit-devel instead of qt-webkit-devel
+
 * Sat Sep 11 2010 Kalev Lember <kalev@smartlink.ee> - 0.4.1-1
 - Update to 0.4.1
 - Added patch to disable xvfb-run which is currently broken (#632879)
