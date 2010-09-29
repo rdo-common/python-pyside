@@ -2,7 +2,7 @@
 
 Name:           python-pyside
 Version:        0.4.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
@@ -118,6 +118,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Sep 29 2010 jkeating - 0.4.1-3
+- Rebuilt for gcc bug 634757
+
 * Fri Sep 17 2010 Kalev Lember <kalev@smartlink.ee> - 0.4.1-2
 - Depend on qt4-webkit-devel instead of qt-webkit-devel
 
