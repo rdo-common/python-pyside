@@ -2,7 +2,7 @@
 
 Name:           python-pyside
 Version:        0.4.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
@@ -18,8 +18,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  cmake
 BuildRequires:  generatorrunner-devel
+# phonon bindings build fails with phonon-4.4.3-0.1.20100909.fc15
 # http://bugs.openbossa.org/show_bug.cgi?id=355
-#BuildRequires:  phonon-devel
+BuildRequires:  phonon-devel
 BuildRequires:  python2-devel
 BuildRequires:  qt4-devel
 BuildRequires:  qt4-webkit-devel
@@ -118,6 +119,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Oct 02 2010 Kalev Lember <kalev@smartlink.ee> - 0.4.1-4
+- Re-enabled phonon bindings
+
 * Wed Sep 29 2010 jkeating - 0.4.1-3
 - Rebuilt for gcc bug 634757
 
