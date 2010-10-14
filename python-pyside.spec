@@ -9,11 +9,6 @@ Group:          Development/Languages
 License:        LGPLv2
 URL:            http://www.pyside.org
 Source0:        http://www.pyside.org/files/pyside-qt4.6+%{version}.tar.bz2
-# Don't override cmake release type to avoid -O3 optimization level
-Patch0:         python-pyside-release-type.patch
-# Don't use xvfb-run which is currently broken in Fedora
-# https://bugzilla.redhat.com/show_bug.cgi?id=632879
-Patch1:         python-pyside-disable_xvfb-run.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  cmake
@@ -57,9 +52,6 @@ developing applications that use %{name}.
 
 # Fix up unit tests to use lrelease-qt4
 sed -i -e "s/lrelease /lrelease-qt4 /" tests/QtCore/translation_test.py
-
-%patch0 -p1 -b .release_type
-%patch1 -p1 -b .disable_xvfb-run
 
 
 %build
@@ -119,6 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Thu Oct 14 2010 Kalev Lember <kalev@smartlink.ee> - 0.4.2-1
 - Update to 0.4.2
+- Dropped upstreamed patches
 
 * Sat Oct 02 2010 Kalev Lember <kalev@smartlink.ee> - 0.4.1-4
 - Re-enabled phonon bindings
