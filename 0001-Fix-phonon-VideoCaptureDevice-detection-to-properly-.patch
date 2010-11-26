@@ -1,0 +1,26 @@
+From 1ac28da9a374c1d64aba6828e809b415c807b39e Mon Sep 17 00:00:00 2001
+From: Kalev Lember <kalev@smartlink.ee>
+Date: Fri, 26 Nov 2010 23:31:14 +0200
+Subject: [PATCH] Fix phonon VideoCaptureDevice detection to properly use phonon_ namespace
+
+Fixes build with phonon 4.4.3 on Fedora rawhide.
+---
+ cmake/Macros/PySideModules.cmake |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/cmake/Macros/PySideModules.cmake b/cmake/Macros/PySideModules.cmake
+index 639a0ab..1686df8 100644
+--- a/cmake/Macros/PySideModules.cmake
++++ b/cmake/Macros/PySideModules.cmake
+@@ -58,7 +58,7 @@ macro(check_qt_class module class global_sources)
+     endif ()
+     string(TOLOWER ${class} _class)
+     string(TOUPPER ${module} _module)
+-    if (${namespace})
++    if (_namespace)
+         set(_cppfile ${CMAKE_CURRENT_BINARY_DIR}/PySide/${module}/${_namespace}_${_class}_wrapper.cpp)
+     else ()
+         set(_cppfile ${CMAKE_CURRENT_BINARY_DIR}/PySide/${module}/${_class}_wrapper.cpp)
+-- 
+1.7.3.2
+
