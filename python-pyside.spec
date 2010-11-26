@@ -1,14 +1,15 @@
+%global prerelease beta1
 %global runtests 1
 
 Name:           python-pyside
-Version:        0.4.2
-Release:        1%{?dist}
+Version:        1.0.0
+Release:        0.1.%{prerelease}%{?dist}
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
 License:        LGPLv2
 URL:            http://www.pyside.org
-Source0:        http://www.pyside.org/files/pyside-qt4.6+%{version}.tar.bz2
+Source0:        http://www.pyside.org/files/pyside-qt4.7+%{version}~%{prerelease}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  cmake
@@ -48,7 +49,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n pyside-qt4.6+%{version}
+%setup -q -n pyside-qt4.7+%{version}~%{prerelease}
 
 # Fix up unit tests to use lrelease-qt4
 sed -i -e "s/lrelease /lrelease-qt4 /" tests/QtCore/translation_test.py
@@ -109,6 +110,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Nov 26 2010 Kalev Lember <kalev@smartlink.ee> - 1.0.0-0.1.beta1
+- Update to 1.0.0~beta1
+
 * Thu Oct 14 2010 Kalev Lember <kalev@smartlink.ee> - 0.4.2-1
 - Update to 0.4.2
 - Dropped upstreamed patches
