@@ -23,8 +23,8 @@ BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  xorg-x11-xauth
 
 # Don't want provides for python shared objects
-%{?filter_provides_in: %filter_provides_in %{python_sitearch}/PySide/.*\.so}
-%{?filter_setup}
+#{?filter_provides_in: #filter_provides_in #{python_sitearch}/PySide/.*\.so}
+#{?filter_setup}
 
 %description
 PySide provides Python bindings for the Qt cross-platform application
@@ -113,6 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 * Sat Jan 22 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.0-0.2.beta4
 - Update to 1.0.0~beta4
 - Dropped upstreamed patches
+- Disabled Provides filtering which fails with ~ in directory name
 
 * Fri Nov 26 2010 Kalev Lember <kalev@smartlink.ee> - 1.0.0-0.1.beta1
 - Update to 1.0.0~beta1
