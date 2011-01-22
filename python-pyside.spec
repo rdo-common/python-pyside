@@ -1,17 +1,15 @@
-%global prerelease beta1
+%global prerelease beta4
 %global runtests 1
 
 Name:           python-pyside
 Version:        1.0.0
-Release:        0.1.%{prerelease}%{?dist}
+Release:        0.2.%{prerelease}%{?dist}
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
 License:        LGPLv2
 URL:            http://www.pyside.org
 Source0:        http://www.pyside.org/files/pyside-qt4.7+%{version}~%{prerelease}.tar.bz2
-# Fix build with phonon 4.4.3
-Patch0:         0001-Fix-phonon-VideoCaptureDevice-detection-to-properly-.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  cmake
@@ -52,8 +50,6 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n pyside-qt4.7+%{version}~%{prerelease}
-
-%patch0 -p1 -b .VideoCaptureDevice
 
 # Fix up unit tests to use lrelease-qt4
 sed -i -e "s/lrelease /lrelease-qt4 /" tests/QtCore/translation_test.py
@@ -101,19 +97,23 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %doc COPYING PySide/licensecomment.txt
-%{_libdir}/libpyside.so.*
+%{_libdir}/libpyside*.so.*
 %{python_sitearch}/PySide/
 
 %files devel
 %defattr(-,root,root,-)
 %{_includedir}/PySide/
-%{_libdir}/libpyside.so
+%{_libdir}/libpyside*.so
 %{_libdir}/cmake/PySide-%{version}/
 %{_libdir}/pkgconfig/pyside.pc
 %{_datadir}/PySide/
 
 
 %changelog
+* Sat Jan 22 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.0-0.2.beta4
+- Update to 1.0.0~beta4
+- Dropped upstreamed patches
+
 * Fri Nov 26 2010 Kalev Lember <kalev@smartlink.ee> - 1.0.0-0.1.beta1
 - Update to 1.0.0~beta1
 - Patch phonon bindings to build with phonon 4.4.3
