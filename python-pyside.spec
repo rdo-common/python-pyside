@@ -3,7 +3,7 @@
 
 Name:           python-pyside
 Version:        1.0.0
-Release:        0.2.%{prerelease}%{?dist}
+Release:        0.3.%{prerelease}%{?dist}
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
@@ -110,6 +110,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.0-0.3.beta4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
 * Sat Jan 22 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.0-0.2.beta4
 - Update to 1.0.0~beta4
 - Dropped upstreamed patches
