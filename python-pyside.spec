@@ -57,7 +57,7 @@ sed -i -e "s/lrelease /lrelease-qt4 /" tests/QtCore/translation_test.py
 %build
 mkdir -p %{_target_platform}
 pushd %{_target_platform}
-%{cmake} -DCMAKE_SKIP_RPATH=true ..
+%{cmake} -DCMAKE_SKIP_RPATH=true -DCMAKE_BUILD_TYPE=Release ..
 popd
 
 make %{?_smp_mflags} -C %{_target_platform}
@@ -112,6 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 * Thu Mar 03 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.0-1
 - Update to 1.0.0
 - Re-enabled Provides filtering
+- Force Release build type to make sure NDEBUG is defined
 
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.0-0.3.beta4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
