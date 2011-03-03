@@ -2,7 +2,7 @@
 
 Name:           python-pyside
 Version:        1.0.0
-Release:        1%{?dist}
+Release:        1%{?dist}.1
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
@@ -20,6 +20,8 @@ BuildRequires:  qt4-webkit-devel
 BuildRequires:  shiboken-devel
 BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  xorg-x11-xauth
+
+%{?_qt4_version:Requires: qt4%{?_isa} >= %{_qt4_version}}
 
 # Don't want provides for python shared objects
 %{?filter_provides_in: %filter_provides_in %{python_sitearch}/PySide/.*\.so}
@@ -109,6 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Mar 03 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.0-1.1
+- Require Qt version greater or equal than the package was built with
+
 * Thu Mar 03 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.0-1
 - Update to 1.0.0
 - Re-enabled Provides filtering
