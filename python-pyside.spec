@@ -1,15 +1,14 @@
-%global prerelease beta4
 %global runtests 1
 
 Name:           python-pyside
 Version:        1.0.0
-Release:        0.3.%{prerelease}%{?dist}
+Release:        1%{?dist}
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
 License:        LGPLv2
 URL:            http://www.pyside.org
-Source0:        http://www.pyside.org/files/pyside-qt4.7+%{version}~%{prerelease}.tar.bz2
+Source0:        http://www.pyside.org/files/pyside-qt4.7+%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  cmake
@@ -23,8 +22,8 @@ BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  xorg-x11-xauth
 
 # Don't want provides for python shared objects
-#{?filter_provides_in: #filter_provides_in #{python_sitearch}/PySide/.*\.so}
-#{?filter_setup}
+%{?filter_provides_in: %filter_provides_in %{python_sitearch}/PySide/.*\.so}
+%{?filter_setup}
 
 %description
 PySide provides Python bindings for the Qt cross-platform application
@@ -49,7 +48,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n pyside-qt4.7+%{version}~%{prerelease}
+%setup -q -n pyside-qt4.7+%{version}
 
 # Fix up unit tests to use lrelease-qt4
 sed -i -e "s/lrelease /lrelease-qt4 /" tests/QtCore/translation_test.py
@@ -110,6 +109,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Mar 03 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.0-1
+- Update to 1.0.0
+- Re-enabled Provides filtering
+
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.0-0.3.beta4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
