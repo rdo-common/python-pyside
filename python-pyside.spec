@@ -1,8 +1,8 @@
 %global runtests 1
 
 Name:           python-pyside
-Version:        1.0.0
-Release:        1%{?dist}.1
+Version:        1.0.1
+Release:        1%{?dist}
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
@@ -111,6 +111,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Apr 03 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.1-1
+- Update to 1.0.1
+
 * Thu Mar 03 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.0-1.1
 - Require Qt version greater or equal than the package was built with
 
