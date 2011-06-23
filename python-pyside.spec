@@ -9,7 +9,6 @@ Group:          Development/Languages
 License:        LGPLv2
 URL:            http://www.pyside.org
 Source0:        http://www.pyside.org/files/pyside-qt4.7+%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  cmake
 BuildRequires:  generatorrunner-devel
@@ -66,11 +65,11 @@ make %{?_smp_mflags} -C %{_target_platform}
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT -C %{_target_platform}
 
 # Fix permissions
 chmod 755 $RPM_BUILD_ROOT%{python_sitearch}/PySide/*.so
+
 
 %check
 %if 0%{?runtests}
@@ -86,23 +85,17 @@ popd
 %endif
 
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-
 %post -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 
 
 %files
-%defattr(-,root,root,-)
 %doc COPYING PySide/licensecomment.txt
 %{_libdir}/libpyside*.so.*
 %{python_sitearch}/PySide/
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/PySide/
 %{_libdir}/libpyside*.so
 %{_libdir}/cmake/PySide-%{version}/
@@ -113,6 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Thu Jun 23 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.4-1
 - Update to 1.0.4
+- Cleaned up the spec file for modern rpmbuild
 
 * Fri May 27 2011 Kalev Lember <kalev@smartlink.ee> - 1.0.3-1
 - Update to 1.0.3
