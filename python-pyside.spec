@@ -1,7 +1,7 @@
 %global runtests 1
 
 Name:           python-pyside
-Version:        1.0.6
+Version:        1.0.8
 Release:        1%{?dist}
 Summary:        Python bindings for Qt4
 
@@ -9,8 +9,6 @@ Group:          Development/Languages
 License:        LGPLv2
 URL:            http://www.pyside.org
 Source0:        http://www.pyside.org/files/pyside-qt4.7+%{version}.tar.bz2
-# http://bugs.pyside.org/show_bug.cgi?id=957
-Patch0:         pyside-qt4.8.patch
 
 BuildRequires:  cmake
 BuildRequires:  generatorrunner-devel
@@ -52,7 +50,6 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n pyside-qt4.7+%{version}
-%patch0 -p1 -b .qt4.8
 
 # Fix up unit tests to use lrelease-qt4
 sed -i -e "s/lrelease /lrelease-qt4 /" tests/QtCore/translation_test.py
@@ -107,6 +104,10 @@ popd
 
 
 %changelog
+* Fri Oct 21 2011 Kalev Lember <kalevlember@gmail.com> - 1.0.8-1
+- Update to 1.0.8
+- Dropped the Qt 4.8 patch that was merged upstream
+
 * Thu Aug 25 2011 Kalev Lember <kalevlember@gmail.com> - 1.0.6-1
 - Update to 1.0.6
 - Added a patch for building with Qt 4.8
