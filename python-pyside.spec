@@ -2,7 +2,7 @@
 
 Name:           python-pyside
 Version:        1.0.8
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
@@ -104,6 +104,9 @@ popd
 
 
 %changelog
+* Sat Jan 14 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.8-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Wed Oct 26 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.8-2
 - Rebuilt for glibc bug#747377
 
