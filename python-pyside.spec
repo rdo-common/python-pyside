@@ -5,7 +5,6 @@ Version:        1.2.1
 Release:        1%{?dist}
 Summary:        Python bindings for Qt4
 
-Group:          Development/Languages
 License:        LGPLv2
 URL:            http://www.pyside.org
 Source0:        http://download.qt-project.org/official_releases/pyside/pyside-qt4.8+%{version}.tar.bz2
@@ -34,8 +33,7 @@ compatible with PyQt4 API 2.
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries
-Requires:       %{name} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       cmake
 Requires:       phonon-devel
 Requires:       python2-devel
@@ -58,7 +56,7 @@ sed -i -e "s/lrelease /lrelease-qt4 /" tests/QtCore/translation_test.py
 %build
 mkdir -p %{_target_platform}
 pushd %{_target_platform}
-%{cmake} -DCMAKE_SKIP_RPATH=true -DCMAKE_BUILD_TYPE=Release ..
+%{cmake} -DCMAKE_BUILD_TYPE=Release ..
 popd
 
 make %{?_smp_mflags} -C %{_target_platform}
@@ -86,9 +84,7 @@ popd
 
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
-
 
 %files
 %doc COPYING PySide/licensecomment.txt
