@@ -9,6 +9,9 @@ License:        LGPLv2
 URL:            http://www.pyside.org
 Source0:        http://download.qt-project.org/official_releases/pyside/pyside-qt4.8+%{version}.tar.bz2
 
+# https://bugreports.qt-project.org/browse/PYSIDE-172
+Patch1: pyside-qt4.8+1.2.1-PYSIDE-172.patch
+
 BuildRequires:  cmake
 BuildRequires:  generatorrunner-devel
 BuildRequires:  phonon-devel
@@ -48,6 +51,8 @@ developing applications that use %{name}.
 
 %prep
 %setup -q -n pyside-qt4.8+%{version}
+
+%patch1 -p1 -b .PYSIDE-172
 
 # Fix up unit tests to use lrelease-qt4
 sed -i -e "s/lrelease /lrelease-qt4 /" tests/QtCore/translation_test.py
