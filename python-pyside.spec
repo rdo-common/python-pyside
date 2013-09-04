@@ -1,14 +1,14 @@
 %global runtests 1
 
 Name:           python-pyside
-Version:        1.1.0
-Release:        4%{?dist}
+Version:        1.2.1
+Release:        1%{?dist}
 Summary:        Python bindings for Qt4
 
 Group:          Development/Languages
 License:        LGPLv2
 URL:            http://www.pyside.org
-Source0:        http://www.pyside.org/files/pyside-qt4.7+%{version}.tar.bz2
+Source0:        http://download.qt-project.org/official_releases/pyside/pyside-qt4.8+%{version}.tar.bz2
 
 BuildRequires:  cmake
 BuildRequires:  generatorrunner-devel
@@ -16,7 +16,7 @@ BuildRequires:  phonon-devel
 BuildRequires:  python2-devel
 BuildRequires:  qt4-devel
 BuildRequires:  qt4-webkit-devel
-BuildRequires:  shiboken-devel
+BuildRequires:  shiboken-devel >= 1.2.0
 BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  xorg-x11-xauth
 
@@ -49,7 +49,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q -n pyside-qt4.7+%{version}
+%setup -q -n pyside-qt4.8+%{version}
 
 # Fix up unit tests to use lrelease-qt4
 sed -i -e "s/lrelease /lrelease-qt4 /" tests/QtCore/translation_test.py
@@ -104,6 +104,9 @@ popd
 
 
 %changelog
+* Tue Sep 03 2013 Rex Dieter <rdieter@fedoraproject.org> 1.2.1-1
+- 1.2.1
+
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.1.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
