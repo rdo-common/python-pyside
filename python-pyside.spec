@@ -2,7 +2,7 @@
 
 Name:           python-pyside
 Version:        1.2.2
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        Python bindings for Qt4
 
 License:        LGPLv2
@@ -100,6 +100,9 @@ popd
 
 
 %changelog
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2.2-6
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.2.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
