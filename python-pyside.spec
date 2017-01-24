@@ -14,7 +14,7 @@ BuildRequires:  generatorrunner-devel
 BuildRequires:  phonon-devel
 BuildRequires:  python2-devel
 BuildRequires:  qt4-devel
-BuildRequires:  qt4-webkit-devel
+#BuildRequires:  qt4-webkit-devel
 BuildRequires:  shiboken-devel >= 1.2.0
 BuildRequires:  xorg-x11-server-Xvfb
 BuildRequires:  xorg-x11-xauth
