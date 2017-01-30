@@ -2,7 +2,7 @@
 
 Name:           python-pyside
 Version:        1.2.2
-Release:        6%{?dist}
+Release:        6%{?dist}.1
 Summary:        Python bindings for Qt4
 
 License:        LGPLv2
@@ -38,7 +38,7 @@ Requires:       cmake
 Requires:       phonon-devel
 Requires:       python2-devel
 Requires:       qt4-devel
-Requires:       qt4-webkit-devel
+#Requires:       qt4-webkit-devel
 Requires:       shiboken-devel
 
 %description    devel
